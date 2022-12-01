@@ -1,41 +1,43 @@
 onload = () => {
-    cards();
+    lancamento();
     plataformas();
+    detalhes();
   
-    document.querySelector("#btn-0").onclick = () => cards();
+    document.querySelector("#btn-0").onclick = () => lancamento();
     document.querySelector("#btn-1").onclick = () => plataformas();
+    document.querySelector("#btn-2").onclick = () => detalhes();
   };
   
   
-  var url0 =
+  var urlGames =
     "https://api.rawg.io/api/games?page=1&page_size=10&key=94c5a1e940c241df9bcd8b95677d1bad";
-  async function cards() {
+  async function lancamento() {
     let str = "";
-    let data = await fetch(url0).then((res) => res.json());
+    let data = await fetch(urlGames).then((res) => res.json());
     let result = data.results;
     for (let index = 0; index < result.length; index++) {
-      const card = result[index];
+      const lancamento = result[index];
       str += `<div class="col-12 col-sm-3 col-md-4 col-lg-3">
       <div class="card border border-0">
-          <h5 class="card-title fw-bold text-truncate">${card.name}</h5>
+          <h5 class="card-title fw-bold text-truncate">${lancamento.name}</h5>
           <div class="ratio" style="--bs-aspect-ratio: 50%;">
-          <img src="${card.background_image}" class="img-fluid" alt="imagem card">
+          <img src="${lancamento.background_image}" class="img-fluid" alt="imagem card">
           </div>
-          <h5 class="fs-6">Classificação: <span class="float-end">${card.rating}</span></h5>
-          <h5 class="fs-6">Data de lançamento: <span class="float-end">${card.released}</span></h5>
+          <h5 class="fs-6">Avaliação: <span class="float-end">${lancamento.rating}</span></h5>
+          <h5 class="fs-6">Lançamento: <span class="float-end">${lancamento.released}</span></h5>
           <div class="card-body">
-          <a href="detalhes.html?${card.id}"><button type="button" class="btn btn-secondary">Mais detalhes ...</button></a>
+          <a href="detalhes.html?${lancamento.id}"><button type="button" class="btn btn-secondary">Mais detalhes</button></a>
           </div>
       </div>
       </div>`;
     }
-    url0 = data.next;
-    document.getElementById("cards").insertAdjacentHTML("beforeend", str);
+    urlGames = data.next;
+    document.getElementById("lancamento").insertAdjacentHTML("beforeend", str);
   }
   
-  var url1 = `https://api.rawg.io/api/platforms?page=1&page_size=3&key=94c5a1e940c241df9bcd8b95677d1bad`;
+  var urlPlataforma = `https://api.rawg.io/api/platforms?page=1&page_size=3&key=94c5a1e940c241df9bcd8b95677d1bad`;
   async function plataformas() {
-    let data = await fetch(url1).then((res) => res.json());
+    let data = await fetch(urlPlataforma).then((res) => res.json());
     let str = "";
     for (let index = 0; index < data.results.length; index++) {
       const plataforma = data.results[index];
@@ -43,7 +45,6 @@ onload = () => {
       <div class="card border border-0">
           <h5 class="card-title fw-bold">${plataforma.name}</h5>
           <div class="formimg" style="background-image: url('${plataforma.image_background}')">
-              
           </div>
           <div class="card-body">
               <p class="card-text">
@@ -54,12 +55,51 @@ onload = () => {
               }
       str += `</ul>
               </p>
+              <p class="card-text text-end">Mais detalhes</p>
+          </div>
+      </div>
+     </div>`;
+    }
+    urlPlataforma = data.next;
+    document.getElementById("plata").insertAdjacentHTML("beforeend", str);
+  }
+  var urlDetalhes = `https://api.rawg.io/api/games/vampire-the-masquerade-bloodlines-2?key=94c5a1e940c241df9bcd8b95677d1bad`;
+  async function detalhes() {
+    let data = await fetch(urlDetalhes).then((res) => res.json());
+    let str = "";
+    for (let index = 0; index < data.results.length; index++) {
+      const detalhe = data.results[index];
+      str += `  <div class="col-12 col-lg-6 col-sm-12 float-start" style="clear: both;">
+                  <div class="ratio ratio-16x9">
+                    <img src="${detalhe.background_image}" class="img-fluid" alt="imagem card">
+                  </div>
+                </div>
+                <div class=" col-12 col-lg-6 col-sm-12 float-end ps-4" id="nopading">
+                <article class="descricao">
+                  <h1 class="card-title fw-bold">${detalhe.name}</h1>
+                  <p> <b>Sobre:</b>${detalhe.description}</p>
+                                <p><b>Lançamento:</b> ${detalhe.released}</p>
+                                <p><b>Plataformas:</b> ${detalhe.platform.name}</p>
+                                <p><b>Gênero:</b> ${detalhe.genres.name}</p>
+
+                                <p><b>Avaliação: </b><b class="text-danger">${detalhe.ratings.percent}</b></p>
+              
+          </div>
+          <div class="card-body">
+              <p class="card-text">
+                  <b>Principais jogos</b>
+              <ul class="lista">`;
+              for (let i = 0; i < 3; i++) {
+                str += `<li>${detalhe.games[i].name}</li>`;
+              }
+      str += `</ul>
+              </p>
               <p class="card-text text-end">Mais detalhes ...</p>
           </div>
       </div>
      </div>`;
     }
-    url1 = data.next;
+    urlDetalhes = data.next;
     document.getElementById("plata").insertAdjacentHTML("beforeend", str);
   }
   

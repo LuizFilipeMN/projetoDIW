@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" media="screen"
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <header class="bg-light">
+    <header class="bg-dark">
         <nav class="navbar navbar-expand-lg px-3">
             <div class="container-fluid nopadding">
                 <a class="navbar-brand" id="logo" href="/html/index.html">
                     <div class="card-img d-flex justify-content-center">
-                        <img src="/img/logoHeader.png" alt="Imagem de destaque">
+                        <img src="/img/logoNova.png" alt="Imagem de destaque">
                     </div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -29,21 +29,21 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="menus">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#destaque">Destaques</a>
+                            <a class="nav-link px-2 text-white" href="#destaque">Destaques</a>
                         </li>
                         <li class="nav-item pt-2 barra"></li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#lancamentos">Lançamentos</a>
+                            <a class="nav-link px-2 text-white" href="#lancamentos">Lançamentos</a>
                         </li>
                         <li class="nav-item pt-2 barra"></li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#plataformas">Plataformas</a>
+                            <a class="nav-link px-2 text-white" href="#plataformas">Plataformas</a>
                         </li>
                         <li class="nav-item pt-2 barra"></li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#publishers">Publishers</a>
+                            <a class="nav-link px-2 text-white" href="#publishers">Publishers</a>
                         </li>
                     </ul>
                     <form class="input-group-append d-flex" role="search">
@@ -171,40 +171,17 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
                     <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: px;">
-                        <li class="nav-item dropdown border border-dark rounded ">
-                            <a class="nav-link dropdown-toggle me-5" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Ordem: Popularity
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown border border-dark rounded ms-4">
-                            <a class="nav-link dropdown-toggle me-5" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Genero: TODOS
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="row small-video" id="lancamento">
-            <!-- aqui estao sendo gerados os cards -->
+        <div class="card">
+            <div class="card-body">
+                <div class="row small-video" id="lancamento">
+            </div>
+            
+        </div>
+        
         </div>
         <div class="float-end py-4">
             <div class="input-group d-flex">
@@ -248,23 +225,9 @@
                     </div>
                 </nav>
                 <article>
-                    Plataforma de games independete, criada para um trabalho da materia de Desenvolvimento de Interfaces
-                    Web (DIW).
+                    Portal de games realizado para a matéria de Desenvolvimento de Interfaces Web pela PUC Minas.
+                    <br><br>Realizado por Luiz Filipe Marques Nascimento do curso de Análise e Desenvolvimento de Sistemas.
                 </article>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-5">
-                <section class="redsocial">
-                    <nav class="navbar navbar-expand-lg" style="padding-bottom: 0;">
-                        <div class="container-fluid nopadding">
-                            <a class="navbar-brand" href="#">
-                                <h4 class="margin">redes sociais:</h4>
-                            </a>
-                        </div>
-                    </nav>
-                    <a href="#" class="text-decoration-none text-black"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-decoration-none text-black"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="text-decoration-none text-black"><i class="bi bi-instagram"></i></a>
-                </section>
             </div>
         </div>
     </section>
@@ -272,15 +235,12 @@
         <div class="container" style="--bs-gap: 5rem;">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-10 col-xl-10 pt-2">
-                    <h5 class="copyright">Copyright 2022 - Disciplina de Desenvolvimento de
-                        Interfaces Web - <b>ICEI PUC Minas</b></h5>
+                    <h5 class="copyright"><b>AirGames</b> - Todos os direitos reservados.</h5><br>
+                    <h6 class="copyright"><b>Aluno:</b> Luiz Filipe Marques Nascimento</h6><br>
+                    <h6 class="copyright"><b>Matrícula:</b> 798440</h6><br>
                 </div>
                 <div class="col-12 col-md-12 col-lg-2 col-xl-2 text-end">
-                    <a class="navbar-brand" id="logo" href="#">
-                        <div class="card-img d-flex justify-content-center">
-                            <img src="/img/logoHeader.png" alt="Imagem de destaque" style="max-width: 50px;">
-                        </div>
-                    </a>
+
                 </div>
             </div>
         </div>

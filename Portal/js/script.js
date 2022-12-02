@@ -17,7 +17,8 @@ onload = () => {
     let result = data.results;
     for (let index = 0; index < result.length; index++) {
       const lancamento = result[index];
-      str += `<div class="col-12 col-sm-3 col-md-4 col-lg-3">
+      str += `
+      <div class="col-12 col-sm-3 col-md-4 col-lg-3">
       <div class="card border border-0">
           <h5 class="card-title fw-bold text-truncate">${lancamento.name}</h5>
           <div class="ratio" style="--bs-aspect-ratio: 50%;">
@@ -25,8 +26,7 @@ onload = () => {
           </div>
           <h5 class="fs-6">Avaliação: <span class="float-end">${lancamento.rating}</span></h5>
           <h5 class="fs-6">Lançamento: <span class="float-end">${lancamento.released}</span></h5>
-          <div class="card-body">
-          <a href="detalhes.html?${lancamento.id}"><button type="button" class="btn btn-secondary">Mais detalhes</button></a>
+          <a href="detalhes.html?id=${lancamento.id}"><button type="button" class="btn btn-secondary">Mais detalhes</button></a>
           </div>
       </div>
       </div>`;
@@ -61,46 +61,32 @@ onload = () => {
      </div>`;
     }
     urlPlataforma = data.next;
-    document.getElementById("plata").insertAdjacentHTML("beforeend", str);
+    document.getElementById("plataformas").insertAdjacentHTML("beforeend", str);
   }
-  var urlDetalhes = `https://api.rawg.io/api/games/vampire-the-masquerade-bloodlines-2?key=94c5a1e940c241df9bcd8b95677d1bad`;
+  var urlDetalhes = `https://api.rawg.io/api/games?key=94c5a1e940c241df9bcd8b95677d1bad`;
   async function detalhes() {
     let data = await fetch(urlDetalhes).then((res) => res.json());
-    let str = "";
-    for (let index = 0; index < data.results.length; index++) {
-      const detalhe = data.results[index];
+    if(idGame != -1){
+      // const detalhe = data.results[index]
       str += `  <div class="col-12 col-lg-6 col-sm-12 float-start" style="clear: both;">
                   <div class="ratio ratio-16x9">
                     <img src="${detalhe.background_image}" class="img-fluid" alt="imagem card">
                   </div>
                 </div>
                 <div class=" col-12 col-lg-6 col-sm-12 float-end ps-4" id="nopading">
-                <article class="descricao">
-                  <h1 class="card-title fw-bold">${detalhe.name}</h1>
-                  <p> <b>Sobre:</b>${detalhe.description}</p>
-                                <p><b>Lançamento:</b> ${detalhe.released}</p>
-                                <p><b>Plataformas:</b> ${detalhe.platform.name}</p>
-                                <p><b>Gênero:</b> ${detalhe.genres.name}</p>
-
-                                <p><b>Avaliação: </b><b class="text-danger">${detalhe.ratings.percent}</b></p>
-              
-          </div>
-          <div class="card-body">
-              <p class="card-text">
-                  <b>Principais jogos</b>
-              <ul class="lista">`;
-              for (let i = 0; i < 3; i++) {
-                str += `<li>${detalhe.games[i].name}</li>`;
-              }
-      str += `</ul>
-              </p>
-              <p class="card-text text-end">Mais detalhes ...</p>
-          </div>
-      </div>
-     </div>`;
-    }
+                  <article class="descricao">
+                    <h1 class="card-title fw-bold">${detalhe.name}</h1>
+                    <p><b>Sobre:</b>${detalhe.description}</p>
+                    <p><b>Lançamento:</b> ${detalhe.released}</p>
+                    <p><b>Plataformas:</b> ${detalhe.platform}</p>
+                    <p><b>Gênero:</b> ${detalhe.genres}</p>
+                    <p><b>Avaliação: </b><b class="text-danger">${detalhe.ratings}</b></p>
+                  </article>
+                </div>`;
     urlDetalhes = data.next;
-    document.getElementById("plata").insertAdjacentHTML("beforeend", str);
+    document.getElementById("detalhe").insertAdjacentHTML("beforeend", str);
+
+    }
   }
   
   
